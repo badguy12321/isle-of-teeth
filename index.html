@@ -210,7 +210,7 @@ function scatterForest(geometry,material,maxCount,seed,placement){
  }
  instances.count=n;instances.instanceMatrix.needsUpdate=true;
  // Frustum culling stays enabled, so offscreen ground cover is not drawn.
- instances.computeBoundingSphere();scene.add(instances);
+ instances.frustumCulled=false;scene.add(instances);
  return instances;
 }
 const fallenBark=new THREE.MeshStandardMaterial({color:0x665640,map:detailMaps.bark,roughness:1});
