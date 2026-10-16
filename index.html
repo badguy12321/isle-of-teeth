@@ -1,5 +1,5 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>Isle of Teeth — Forest & Sprint Update</title><style>*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#0b1c20;color:#fff;font:13px system-ui;touch-action:none}#game{position:relative;width:100vw;height:100dvh;overflow:hidden}canvas{display:block}#look{position:absolute;inset:0 0 0 33%;touch-action:none}.hud{position:absolute;top:8px;left:8px;right:8px;display:flex;justify-content:space-between;pointer-events:none;text-shadow:0 1px 3px #000}.panel{background:#08242acb;padding:9px;border-radius:9px;font-size:11px}.bar{width:95px;height:5px;background:#0008;border-radius:4px;margin:3px 0 5px}.fill{height:100%;background:#da7363}.cross{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:26px;text-shadow:0 1px 5px black;pointer-events:none}.target{position:absolute;top:calc(50% + 27px);left:50%;transform:translateX(-50%);background:#09272ac9;padding:5px 9px;border-radius:7px;font-size:11px;white-space:nowrap;pointer-events:none}.joy{position:absolute;bottom:20px;left:18px;width:112px;height:112px;border:2px solid #fffa;border-radius:50%;background:#ffffff2b;touch-action:none}.nub{position:absolute;left:38px;top:38px;width:32px;height:32px;border-radius:50%;background:#fffe;pointer-events:none}.buttons{position:absolute;bottom:17px;right:8px;display:grid;grid-template-columns:repeat(4,56px);gap:5px}.buttons button{background:#103e45e8;border:1px solid #ffffff8a;color:white;border-radius:10px;font-size:11px;font-weight:800;height:50px;touch-action:manipulation}.buttons button:first-child{background:#ad4938e9}.sheet{position:absolute;inset:0;background:#092329f5;z-index:6;overflow:auto;padding:20px;touch-action:pan-y}.sheet *{touch-action:pan-y}.hidden{display:none!important}.sheet h1{font-size:26px;letter-spacing:2px}.sheet h2{font-size:20px}.sheet p{line-height:1.65;color:#d2e4df}.sheet button{background:#337b59;color:white;border:1px solid #92c7a7;border-radius:9px;padding:11px;font-weight:800;touch-action:manipulation}.row{display:flex;justify-content:space-between;align-items:center;gap:10px;border:1px solid #ffffff25;border-radius:9px;padding:9px;margin:7px 0;background:#ffffff0a}.row small{display:block;color:#b8ccc7;margin-top:4px}.toast{position:absolute;top:29%;left:50%;transform:translateX(-50%);background:#09262ae9;border-radius:8px;padding:9px 12px;opacity:0;pointer-events:none;white-space:nowrap;z-index:2}#loading{font-size:12px;color:#bde6d0}#sprint{position:absolute;right:8px;left:auto;bottom:135px;width:117px;height:49px;border-radius:12px;border:1px solid #ffffffa9;background:#255b6de9;color:#fff;font-weight:900;touch-action:none}#swim{position:absolute;top:112px;left:8px;background:#09242acb;padding:7px;border-radius:8px;font-size:11px;pointer-events:none;display:none}#swimbar{width:92px;height:6px;background:#0008;border-radius:6px;margin-top:3px}#oxygenfill{height:100%;background:#79d9f5;width:100%}#quickbar{position:absolute;bottom:4px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:2;pointer-events:auto}#quickbar button{font-size:10px;background:#102b31db;color:white;border:1px solid #ffffff80;border-radius:6px;padding:5px 7px}#quickbar button.active{border-color:#eec779;background:#6a5130}#danger{position:absolute;inset:0;pointer-events:none;border:0 solid #ad2525;z-index:2}#missiontip{position:absolute;top:110px;left:8px;max-width:46%;font-size:10px;background:#09242abf;padding:5px 7px;border-radius:6px;pointer-events:none}#quality{position:absolute;top:74px;left:8px;background:#09242abf;color:#d1e4df;padding:4px;border-radius:5px;font-size:10px;pointer-events:none} #jump{position:absolute;right:16px;bottom:230px;width:82px;height:48px;border-radius:11px;border:1px solid #ffffffb0;background:#31644cdd;color:white;font-weight:900;z-index:2;touch-action:none}@media(max-height:520px){#jump{bottom:173px;right:210px}}
-</style><link rel="manifest" href="./manifest.webmanifest"><meta name="theme-color" content="#142c1e"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Isle of Teeth"><link rel="apple-touch-icon" href="./icon-192.png"></head><body><div id="game"><div id="look"></div><div class="hud"><div class="panel"><b>ISLE OF TEETH · SURVIVAL CAMPAIGN 13.2</b><div>♥ HEALTH <span id="hp">100</span></div><div class="bar"><div class="fill" id="hpbar"></div></div><div>⚡ <span id="st">100</span> · 🍖 <span id="hu">100</span> · 💧 <span id="th">100</span></div></div><div class="panel" style="text-align:right"><b id="biome">JUNGLE</b><div id="weather">CLEAR · DAY 1</div><div id="equip">Fists</div><div id="weight">Weight 0 / 65</div></div></div><div id="questhud" style="position:absolute;top:155px;left:8px;max-width:48vw;background:#09242ae0;border-left:3px solid #e8c478;padding:8px;border-radius:5px;font-size:11px;pointer-events:none"><b>THE LOST EXPEDITION</b><div id="questline">Find your bearings.</div><div id="questdistance"></div></div><div id="compass" style="position:absolute;top:116px;left:50%;transform:translateX(-50%);background:#09242acb;border:1px solid #ffffff55;border-radius:8px;padding:5px 11px;font-size:12px;font-weight:700;pointer-events:none;white-space:nowrap">N · 000°</div><div class="cross">+</div><div id="danger"></div><div id="quality">PERFORMANCE AUTO</div><div id="missiontip">Explore · Check LOG for your objective</div><div id="quickbar"><button data-equip="Fists">FISTS</button><button data-equip="Spear">SPEAR</button><button data-equip="Bow">BOW</button><button data-equip="Rifle">RIFLE</button></div><div class="target" id="target">Explore the island</div><div class="toast" id="toast"></div><div id="swim">SWIMMING · OXYGEN <span id="oxy">100</span><div id="swimbar"><div id="oxygenfill"></div></div></div><button id="sprint">⇧ SPRINT</button><button id="jump">↑ JUMP</button><div class="joy" id="joy"><div class="nub"></div></div><div class="buttons"><button id="attack">⚔<br>ATTACK</button><button id="use">✋<br>GATHER</button><button id="interact">📡<br>STORY</button><button id="tame">🦕<br>TAME</button><button id="craft">⚒<br>TECH</button><button id="bag">▦<br>BAG</button><button id="map">◈<br>MAP</button><button id="journal">📜<br>LOG</button></div><div class="sheet" id="intro" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center"><h1>ISLE OF TEETH</h1><h2>SURVIVAL CAMPAIGN 13.2</h2><p>Survival Campaign 12.0: expedition story, autosave, quick equipment bar, dynamic threats, adaptive mobile graphics, and expanded island. Darker ARK-inspired ocean, swimming, drag-to-look while sprinting, five open plains surrounded by near-continuous, sky-blocking forest canopy, and development-only map teleport. Free dinosaur models are imported automatically from the publisher catalog when available; live import status appears at top right. Tap SOUND to enable footsteps, wildlife calls, and survival audio. The 3D ASSETS menu is for optional manual uploads. Explore the LOST EXPEDITION campaign and save in LOG. Tap the map to teleport anywhere on land.<br>Left joystick: move · Right swipe: look · Aim to interact.<br>Turn your iPhone sideways for the best experience.</p><div id="loading">Loading 3D engine…</div><button id="start" disabled>ENTER THE ISLAND ▶</button></div><div class="sheet hidden" id="sheet"><div style="display:flex;justify-content:space-between;align-items:center"><h2 id="sheettitle">Inventory</h2><button id="close">✕ CLOSE</button></div><div id="sheetbody"></div></div></div><div id="assetui" style="position:absolute;bottom:110px;left:50%;transform:translateX(-50%);background:#061b20e8;border:1px solid #ffffff55;border-radius:9px;padding:8px;z-index:12;display:none;max-width:92vw;width:310px"><b>3D DINOSAUR ASSETS</b><div style="font-size:11px;margin:5px 0">Import a rigged .glb dinosaur model. If it has animations, they will play automatically. Files remain on your device.</div><select id="species" style="width:100%;padding:5px;background:#17383c;color:white"></select><input id="glb" type="file" accept=".glb,.gltf,model/gltf-binary" style="width:100%;margin:7px 0;font-size:11px"><button id="assetclose" style="padding:5px">CLOSE</button><div id="assetstatus" style="font-size:11px;margin-top:5px"></div></div><button id="soundtoggle" aria-label="Toggle game sound" style="position:absolute;top:72px;left:8px;z-index:10;background:#0d3039e8;color:white;border:1px solid #ffffff66;border-radius:7px;padding:7px;font-size:11px;touch-action:manipulation">🔇 SOUND</button><button id="assets" style="position:absolute;top:72px;right:8px;z-index:10;background:#0d3039d9;color:white;border:1px solid #ffffff66;border-radius:7px;padding:7px;font-size:11px">3D ASSETS</button><script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script><script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/loaders/GLTFLoader.js"></script><script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/loaders/FBXLoader.js"></script><script src="https://cdn.jsdelivr.net/npm/fflate@0.7.4/umd/index.js"></script><script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/utils/SkeletonUtils.js"></script>
+</style><link rel="manifest" href="./manifest.webmanifest"><meta name="theme-color" content="#142c1e"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Isle of Teeth"><link rel="apple-touch-icon" href="./icon-192.png"></head><body><div id="game"><div id="look"></div><div class="hud"><div class="panel"><b>ISLE OF TEETH · SURVIVAL CAMPAIGN 13.3</b><div>♥ HEALTH <span id="hp">100</span></div><div class="bar"><div class="fill" id="hpbar"></div></div><div>⚡ <span id="st">100</span> · 🍖 <span id="hu">100</span> · 💧 <span id="th">100</span></div></div><div class="panel" style="text-align:right"><b id="biome">JUNGLE</b><div id="weather">CLEAR · DAY 1</div><div id="equip">Fists</div><div id="weight">Weight 0 / 65</div></div></div><div id="questhud" style="position:absolute;top:155px;left:8px;max-width:48vw;background:#09242ae0;border-left:3px solid #e8c478;padding:8px;border-radius:5px;font-size:11px;pointer-events:none"><b>THE LOST EXPEDITION</b><div id="questline">Find your bearings.</div><div id="questdistance"></div></div><div id="compass" style="position:absolute;top:116px;left:50%;transform:translateX(-50%);background:#09242acb;border:1px solid #ffffff55;border-radius:8px;padding:5px 11px;font-size:12px;font-weight:700;pointer-events:none;white-space:nowrap">N · 000°</div><div class="cross">+</div><div id="danger"></div><div id="quality">PERFORMANCE AUTO</div><div id="missiontip">Explore · Check LOG for your objective</div><div id="quickbar"><button data-equip="Fists">FISTS</button><button data-equip="Spear">SPEAR</button><button data-equip="Bow">BOW</button><button data-equip="Rifle">RIFLE</button></div><div class="target" id="target">Explore the island</div><div class="toast" id="toast"></div><div id="swim">SWIMMING · OXYGEN <span id="oxy">100</span><div id="swimbar"><div id="oxygenfill"></div></div></div><button id="sprint">⇧ SPRINT</button><button id="jump">↑ JUMP</button><div class="joy" id="joy"><div class="nub"></div></div><div class="buttons"><button id="attack">⚔<br>ATTACK</button><button id="use">✋<br>GATHER</button><button id="interact">📡<br>STORY</button><button id="tame">🦕<br>TAME</button><button id="craft">⚒<br>TECH</button><button id="bag">▦<br>BAG</button><button id="map">◈<br>MAP</button><button id="journal">📜<br>LOG</button></div><div class="sheet" id="intro" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center"><h1>ISLE OF TEETH</h1><h2>SURVIVAL CAMPAIGN 13.3</h2><p>Survival Campaign 12.0: expedition story, autosave, quick equipment bar, dynamic threats, adaptive mobile graphics, and expanded island. Darker ARK-inspired ocean, swimming, drag-to-look while sprinting, five open plains surrounded by near-continuous, sky-blocking forest canopy, and development-only map teleport. Free dinosaur models are imported automatically from the publisher catalog when available; live import status appears at top right. Tap SOUND to enable footsteps, wildlife calls, and survival audio. The 3D ASSETS menu is for optional manual uploads. Explore the LOST EXPEDITION campaign and save in LOG. Tap the map to teleport anywhere on land.<br>Left joystick: move · Right swipe: look · Aim to interact.<br>Turn your iPhone sideways for the best experience.</p><div id="loading">Loading 3D engine…</div><button id="start" disabled>ENTER THE ISLAND ▶</button></div><div class="sheet hidden" id="sheet"><div style="display:flex;justify-content:space-between;align-items:center"><h2 id="sheettitle">Inventory</h2><button id="close">✕ CLOSE</button></div><div id="sheetbody"></div></div></div><div id="assetui" style="position:absolute;bottom:110px;left:50%;transform:translateX(-50%);background:#061b20e8;border:1px solid #ffffff55;border-radius:9px;padding:8px;z-index:12;display:none;max-width:92vw;width:310px"><b>3D DINOSAUR ASSETS</b><div style="font-size:11px;margin:5px 0">Import a rigged .glb dinosaur model. If it has animations, they will play automatically. Files remain on your device.</div><select id="species" style="width:100%;padding:5px;background:#17383c;color:white"></select><input id="glb" type="file" accept=".glb,.gltf,model/gltf-binary" style="width:100%;margin:7px 0;font-size:11px"><button id="assetclose" style="padding:5px">CLOSE</button><div id="assetstatus" style="font-size:11px;margin-top:5px"></div></div><button id="soundtoggle" aria-label="Toggle game sound" style="position:absolute;top:72px;left:8px;z-index:10;background:#0d3039e8;color:white;border:1px solid #ffffff66;border-radius:7px;padding:7px;font-size:11px;touch-action:manipulation">🔇 SOUND</button><button id="assets" style="position:absolute;top:72px;right:8px;z-index:10;background:#0d3039d9;color:white;border:1px solid #ffffff66;border-radius:7px;padding:7px;font-size:11px">3D ASSETS</button><script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script><script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/loaders/GLTFLoader.js"></script><script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/loaders/FBXLoader.js"></script><script src="https://cdn.jsdelivr.net/npm/fflate@0.7.4/umd/index.js"></script><script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/utils/SkeletonUtils.js"></script>
 <script>
 (()=>{'use strict';const $=id=>document.getElementById(id);let scene,camera,renderer,clock,playing=false,paused=false,yaw=0,pitch=0,daytime=0,weather='CLEAR',weatherT=60,hitCooldown=0,attackAnim=0,toastT=0,HP=100,ST=100,HU=100,TH=100;const pos={x:0,z:18},stick={x:0,y:0},inv={Wood:0,Stone:0,Fiber:0,Berries:4,Metal:0,Meat:0,Hide:0,Water:3,Tranq:0},gear={Axe:false,Pickaxe:false,Spear:false,Bow:false,Trap:false,Shelter:false,Forge:false,Rifle:false,TranqDarts:false},dinos=[],resources=[],trees=[],decoration=[];let sprinting=false,oxygen=100,swimDepth=0,swimBob=0;let activeMixers=[],customAssetUrls={},modelLoader=null;let equipped='Fists',shelter=null,water,sun,ambient,weaponGroup,clouds=[],waterTime=0,skyDome,skyUniforms,waterUniforms;const islandRadius=2400;const worldSpan=5100;let jumpHeight=0,jumpVelocity=0;
 const STORY=[
@@ -154,181 +154,102 @@ function makeForestFloorTexture(){
 }
 let refreshNearbyForest=()=>{};
 function addEnvironment(){
-// Stream a tightly packed rainforest around the player. Stable world-grid seeds
-// ensure trees do not jump as the player moves; only nearby GPU instances exist.
-const spacing=6.2, radius=165, maxTrees=3900;
-const trunkGeo=new THREE.CylinderGeometry(.26,.54,1,7);
-const crownGeo=new THREE.ConeGeometry(1,1,7,3);
-const leafGeo=new THREE.IcosahedronGeometry(1,1);
-const bark=new THREE.MeshStandardMaterial({color:0x67513a,map:detailMaps.bark,roughness:1});
-const leafMaterials=[0x285331,0x35643a,0x467443].map(color=>new THREE.MeshStandardMaterial({color,map:detailMaps.leaf,roughness:1,side:THREE.DoubleSide}));
-const trunk=new THREE.InstancedMesh(trunkGeo,bark,maxTrees);
-const crowns=[0,1,2].map(i=>new THREE.InstancedMesh(crownGeo,leafMaterials[i],maxTrees));
-const foliage=[0,1].map(i=>new THREE.InstancedMesh(leafGeo,leafMaterials[i],maxTrees*2));
-const understory=new THREE.InstancedMesh(new THREE.ConeGeometry(1,1.8,5),leafMaterials[1],maxTrees*2);understory.visible=false; // Testing: hide small conical undergrowth
-const meshes=[trunk,...crowns,...foliage,understory];
-for(const m of meshes){m.count=0;m.frustumCulled=false;m.instanceMatrix.setUsage(THREE.DynamicDrawUsage);scene.add(m)}
-const forestPlacementDummy=new THREE.Object3D();let lastX=Infinity,lastZ=Infinity;
-function put(m,i,x,y,z,sx,sy,sz,angle=0){forestPlacementDummy.position.set(x,y,z);forestPlacementDummy.rotation.set(0,angle,0);forestPlacementDummy.scale.set(sx,sy,sz);forestPlacementDummy.updateMatrix();m.setMatrixAt(i,forestPlacementDummy.matrix)}
-refreshNearbyForest=(force=false)=>{
- if(!force&&Math.hypot(pos.x-lastX,pos.z-lastZ)<24)return;
- lastX=pos.x;lastZ=pos.z;
- const cx=Math.floor(pos.x/spacing),cz=Math.floor(pos.z/spacing),cells=Math.ceil(radius/spacing);
- let n=0,fol=0,under=0;
- for(let dz=-cells;dz<=cells&&n<maxTrees;dz++)for(let dx=-cells;dx<=cells&&n<maxTrees;dx++){
-  const gx=cx+dx,gz=cz+dz;
-  const jx=(rand(gx+817,gz+201)-.5)*spacing*.48,jz=(rand(gx+131,gz+793)-.5)*spacing*.48;
-  const x=gx*spacing+jx,z=gz*spacing+jz;
-  if((x-pos.x)**2+(z-pos.z)**2>radius*radius)continue;
-  const h=terrainHeight(x,z),b=biome(x,z);
-  if(h<1.15||h>36||b==='BEACH'||b==='MOUNTAINS'||b==='GRASSLANDS'||riverProximity(x,z)<23)continue;
-  // Thin only some cells to produce occasional footpaths, never open forest.
-  if(rand(gx+12,gz+44)<.12)continue;
-  const tall=rand(gx+91,gz+61)>.27;
-  const height=tall?19+rand(gx+8,gz+2)*15:9+rand(gx+18,gz+23)*8;
-  const spread=tall?5.1+rand(gx+17,gz+22)*2.5:3.6+rand(gx+25,gz+38)*1.8;
-  const rot=rand(gx+45,gz+66)*6.283;
-  put(trunk,n,x,h+height*.48,z,tall?1.15:.8,height*.96,tall?1.15:.8,rot);
-  // Three staggered, broad conical crowns and offset leaf masses overlap above.
-  for(let k=0;k<3;k++){
-   const yy=h+height*(.69+k*.12),ww=spread*(1.05-k*.14);
-   put(crowns[k],n,x+Math.sin(rot+k)*.75,yy,z+Math.cos(rot+k)*.75,ww,ww*1.55,ww,rot+k*.9);
-  }
-  for(let k=0;k<2;k++){
-   const ang=rot+k*2.7,rr=spread*.52;
-   put(foliage[k],n*2,x+Math.cos(ang)*rr,h+height*.78,z+Math.sin(ang)*rr,spread*.82,spread*.48,spread*.8,ang);
-   put(foliage[k],n*2+1,x-Math.cos(ang)*rr*.6,h+height*.88,z-Math.sin(ang)*rr*.6,spread*.75,spread*.43,spread*.7,ang+.8);
-  }
-  for(let k=0;k<2;k++){
-   const ox=(rand(gx+k*19,gz+19)-.5)*spacing,oz=(rand(gx+31,gz+k*17)-.5)*spacing;
-   const uh=1.8+rand(gx+77+k,gz+41)*2.3;
-   put(understory,n*2+k,x+ox,h+uh*.46,z+oz,1.1+rand(gx+k,gz)*.8,uh,1.1+rand(gx,gz+k)*.8,rot+k);
-  }
-  n++;
- }
- trunk.count=n;for(const m of crowns)m.count=n;
- for(const m of foliage)m.count=n*2;
- understory.count=n*2;
- for(const m of meshes)m.instanceMatrix.needsUpdate=true;
-};
-refreshNearbyForest(true);
-// Visible tree loading test: a clearly marked three-tree showcase at the spawn.
-(function loadTreeSamples(){
- const status=document.createElement('div');status.id='tree-test-status';
- status.style.cssText='position:absolute;top:108px;right:8px;z-index:20;background:#071d21ed;color:#fff;border:2px solid #f5d469;border-radius:8px;padding:8px;font:bold 12px Arial;pointer-events:none;max-width:170px';
- status.textContent='REAL TREE TEST: loading 0/5';document.getElementById('game').appendChild(status);
- if(!THREE.GLTFLoader){status.textContent='TREE TEST: GLTF loader missing';return;}
- const specs=[
-  {file:'tree_56_eastern_white_pine.glb',x:pos.x+9,z:pos.z-17,height:19},
-  {file:'tree_20_western_hemlock.glb',x:pos.x-9,z:pos.z-17,height:18},
-  {file:'tree_16_ponderosa_pine.glb',x:pos.x+19,z:pos.z-24,height:20},
-  {file:'tree_43_sitka_spruce.glb',x:pos.x-19,z:pos.z-24,height:19},
-  {file:'tree_65_wollemi_pine.glb',x:pos.x,z:pos.z-32,height:17}
- ];
- const loader=new THREE.GLTFLoader();let loaded=0,failed=0;
- for(const spec of specs){
-  // Bright ground-level marker helps locate each model even through dense vegetation.
-  const marker=new THREE.Mesh(new THREE.CylinderGeometry(2.3,2.3,.22,16),new THREE.MeshBasicMaterial({color:0xffd700}));
-  marker.position.set(spec.x,terrainHeight(spec.x,spec.z)+.12,spec.z);scene.add(marker);
-  loader.load('./models/trees/'+spec.file+'?v=13.2',gltf=>{
-   const tree=gltf.scene;tree.updateMatrixWorld(true);
-   const bounds=new THREE.Box3().setFromObject(tree),size=bounds.getSize(new THREE.Vector3());
-   if(!Number.isFinite(size.y)||size.y<.01){failed++;status.textContent='REAL TREE TEST: '+loaded+'/3 loaded, '+failed+' failed';return;}
-   const scale=spec.height/size.y;tree.scale.setScalar(scale);
-   tree.position.set(spec.x-(bounds.min.x+bounds.max.x)*scale*.5,terrainHeight(spec.x,spec.z)-bounds.min.y*scale, spec.z-(bounds.min.z+bounds.max.z)*scale*.5);
-   tree.traverse(o=>{if(o.isMesh){o.castShadow=false;o.receiveShadow=true;}});
-   scene.add(tree);loaded++;status.textContent='REAL TREE TEST: '+loaded+'/5 loaded'+(failed?' · '+failed+' failed':'');
-  },undefined,err=>{failed++;status.textContent='REAL TREE TEST: '+loaded+'/3 loaded · '+failed+' failed';console.warn('Tree test failed',spec.file,err);});
- }
-})();
-
-// Build 13.2: test four real foliage GLBs beside the verified realistic conifers.
-(function loadRealFoliageSamples(){
- const status=document.createElement('div');status.id='foliage-test-status';
- status.style.cssText='position:absolute;top:165px;right:8px;z-index:20;background:#071d21ed;color:#fff;border:2px solid #7edb87;border-radius:8px;padding:8px;font:bold 12px Arial;pointer-events:none;max-width:190px';
- status.textContent='FOLIAGE TEST: loading 0/4';document.getElementById('game').appendChild(status);
- if(!THREE.GLTFLoader){status.textContent='FOLIAGE TEST: loader missing';return;}
- const specs=[
-  {file:'shrub_03.glb',label:'SHRUB',x:pos.x-5,z:pos.z-10,height:2.3},
-  {file:'fern_02.glb',label:'FERN',x:pos.x+5,z:pos.z-10,height:1.4},
-  {file:'shrub_sorrel_01.glb',label:'GROUND COVER',x:pos.x-5,z:pos.z-6,height:.55},
-  {file:'dead_tree_trunk.glb',label:'FALLEN TRUNK',x:pos.x+5,z:pos.z-6,height:1.4}
- ];
- const loader=new THREE.GLTFLoader();let loaded=0,failed=0;
- const update=()=>{status.textContent='FOLIAGE TEST: '+loaded+'/4 loaded'+(failed?' · '+failed+' failed':'');};
- for(const spec of specs){
-  const marker=new THREE.Mesh(new THREE.CylinderGeometry(1.35,1.35,.10,16),new THREE.MeshBasicMaterial({color:0x55e78d}));
-  marker.position.set(spec.x,terrainHeight(spec.x,spec.z)+.055,spec.z);scene.add(marker);
-  loader.load('./models/foliage/'+spec.file+'?v=13.2',gltf=>{
-   try{
-    const model=gltf.scene;model.updateMatrixWorld(true);
-    const bounds=new THREE.Box3().setFromObject(model),size=bounds.getSize(new THREE.Vector3());
-    if(!Number.isFinite(size.y)||size.y<.001)throw new Error('Invalid model bounds');
-    const scale=spec.height/size.y;model.scale.setScalar(scale);
-    model.position.set(spec.x-(bounds.min.x+bounds.max.x)*scale*.5,terrainHeight(spec.x,spec.z)-bounds.min.y*scale,spec.z-(bounds.min.z+bounds.max.z)*scale*.5);
-    model.traverse(o=>{if(o.isMesh){o.castShadow=false;o.receiveShadow=true;if(o.material){const materials=Array.isArray(o.material)?o.material:[o.material];for(const m of materials){if(m.map&&m.transparent===false&&m.alphaTest===0&&m.alphaMap)m.alphaTest=.3;m.side=THREE.DoubleSide;}}}});
-    scene.add(model);loaded++;update();
-   }catch(err){failed++;update();console.warn('Foliage display failed',spec.file,err);}
-  },undefined,err=>{failed++;update();console.warn('Foliage load failed',spec.file,err);});
- }
-})();
-
-// Forest floor: instanced fallen trunks, mossy stones, ferns and broad leaf litter.
-// Each family is a single GPU draw call and avoids per-frame updates.
-const forestDummy=new THREE.Object3D();
-function scatterForest(geometry,material,maxCount,seed,placement){
- const instances=new THREE.InstancedMesh(geometry,material,maxCount);
- instances.instanceMatrix.setUsage(THREE.StaticDrawUsage);
- let n=0;
- for(let i=0;i<maxCount*4&&n<maxCount;i++){
-  const x=(rand(i+seed,31+seed)-.5)*worldSpan*.88;
-  const z=(rand(i+seed,79+seed)-.5)*worldSpan*.88;
-  const h=terrainHeight(x,z),b=biome(x,z);
-  if(h<1.1||h>25||b==='BEACH'||b==='MOUNTAINS'||b==='GRASSLANDS'||riverProximity(x,z)<7||Math.hypot(x-pos.x,z-pos.z)<5)continue;
-  placement(forestDummy,x,h,z,i);forestDummy.updateMatrix();instances.setMatrixAt(n++,forestDummy.matrix);
- }
- instances.count=n;instances.instanceMatrix.needsUpdate=true;
- // Frustum culling stays enabled, so offscreen ground cover is not drawn.
- instances.frustumCulled=false;scene.add(instances);
- return instances;
+// Build 13.3: stream the real GLB conifers and dense textured understory.
+// All species load once; each source mesh becomes an instanced draw call.
+const loader=new THREE.GLTFLoader();
+const species=[
+ {file:'tree_56_eastern_white_pine.glb',dir:'trees',kind:'tree',height:23,max:210},
+ {file:'tree_20_western_hemlock.glb',dir:'trees',kind:'tree',height:21,max:210},
+ {file:'tree_16_ponderosa_pine.glb',dir:'trees',kind:'tree',height:25,max:210},
+ {file:'tree_43_sitka_spruce.glb',dir:'trees',kind:'tree',height:24,max:210},
+ {file:'tree_65_wollemi_pine.glb',dir:'trees',kind:'tree',height:19,max:210},
+ {file:'shrub_03.glb',dir:'foliage',kind:'shrub',height:2.15,max:390},
+ {file:'fern_02.glb',dir:'foliage',kind:'fern',height:1.25,max:630},
+ {file:'shrub_sorrel_01.glb',dir:'foliage',kind:'sorrel',height:.55,max:760},
+ {file:'dead_tree_trunk.glb',dir:'foliage',kind:'log',height:1.15,max:32}
+];
+const status=document.createElement('div');
+status.style.cssText='position:absolute;top:112px;right:8px;z-index:4;background:#092b28dc;color:#ddf9e6;padding:7px;border-radius:7px;font:11px system-ui;pointer-events:none;max-width:175px';
+document.getElementById('game').appendChild(status);
+let loaded=0,failed=0;
+function updateStatus(){status.textContent='REAL FOREST 13.3 · '+loaded+'/9 models'+(failed?' · '+failed+' failed':'');}
+updateStatus();
+const dummy=new THREE.Object3D();
+function allowed(x,z,forTree){
+ const h=terrainHeight(x,z),b=biome(x,z);
+ if(h<1.15||h>36||b==='BEACH'||b==='MOUNTAINS'||b==='GRASSLANDS'||riverProximity(x,z)<(forTree?22:8))return false;
+ return true;
 }
-const fallenBark=new THREE.MeshStandardMaterial({color:0x665640,map:detailMaps.bark,roughness:1});
-scatterForest(new THREE.CylinderGeometry(.19,.29,1,7),fallenBark,180,2101,(d,x,h,z,i)=>{
- const length=2.5+rand(i,202)*7;
- d.position.set(x,h+.3,z);d.rotation.set(Math.PI/2+(rand(i,204)-.5)*.14,rand(i,203)*6.283,0);
- d.scale.set(1+rand(i,205)*.9,length,1+rand(i,206)*.8);
-});
-const mossRockMat=new THREE.MeshStandardMaterial({color:0x778675,map:detailMaps.rock,normalMap:normalDetail,normalScale:new THREE.Vector2(.25,.25),roughness:1});
-scatterForest(new THREE.DodecahedronGeometry(1,0),mossRockMat,450,2202,(d,x,h,z,i)=>{
- const sc=.3+rand(i,302)*1.5;d.position.set(x,h+sc*.24,z);d.rotation.set(rand(i,303)*.3,rand(i,304)*6.283,rand(i,305)*.3);d.scale.set(sc,sc*.45,sc*.85);
-});
-const litterMat=new THREE.MeshStandardMaterial({color:0x627346,map:detailMaps.leaf,side:THREE.DoubleSide,roughness:1,transparent:false});
-scatterForest(new THREE.PlaneGeometry(1,1),litterMat,1400,2303,(d,x,h,z,i)=>{
- const sc=.35+rand(i,401)*1.15;d.position.set(x,h+.055,z);d.rotation.set(-Math.PI/2,0,rand(i,402)*6.283);d.scale.set(sc,sc*.48,1);
-});
-const fernBlade=new THREE.MeshStandardMaterial({color:0x39764a,map:detailMaps.leaf,side:THREE.DoubleSide,roughness:1});
-scatterForest(new THREE.ConeGeometry(.42,1.9,5),fernBlade,0,2404,(d,x,h,z,i)=>{
- const sc=.65+rand(i,501)*1.25;d.position.set(x,h+sc*.82,z);d.rotation.set(.15,rand(i,502)*6.283,.22);d.scale.set(sc,sc,sc);
-});
-// More diffuse daylight and cooler ambient bounce create softer, readable canopy shade.
-ambient.color.setHex(0xd0e5e4);ambient.groundColor.setHex(0x324d34);ambient.intensity=1.55;
-sun.intensity=2.0;
-
-// GPU-instanced grass: thousands of blades in only two draw calls.
-const grassGeo=new THREE.ConeGeometry(.09,.8,3),grassMat=new THREE.MeshStandardMaterial({color:0x719954,roughness:1,side:THREE.DoubleSide});
-const grass=new THREE.InstancedMesh(grassGeo,grassMat,2800);grass.instanceMatrix.setUsage(THREE.StaticDrawUsage);const dummy=new THREE.Object3D();let count=0;
-for(let i=0;i<9000&&count<2800;i++){let x=(rand(i,119)-.5)*4400,z=(rand(i,239)-.5)*4400,h=terrainHeight(x,z),b=biome(x,z);if(h<1.2||h>10||b==='BEACH'||Math.hypot(x-pos.x,z-pos.z)<2.5)continue;let scale=.45+rand(i,87)*1.15;dummy.position.set(x,h+.3*scale,z);dummy.rotation.set(.08*(rand(i,15)-.5),rand(i,38)*6.28,.2*(rand(i,52)-.5));dummy.scale.set(scale,scale,scale);dummy.updateMatrix();grass.setMatrixAt(count++,dummy.matrix)}grass.count=count;grass.instanceMatrix.needsUpdate=true;grass.frustumCulled=false;scene.add(grass);
-// Broadleaf fern clusters and layered undergrowth: three GPU-instanced leaf meshes.
-const fernGeo=new THREE.PlaneGeometry(.32,1.65),fernMat=new THREE.MeshStandardMaterial({color:0x3e8450,roughness:1,side:THREE.DoubleSide,alphaTest:0});
-for(let leaf=0;leaf<3;leaf++){let ferns=new THREE.InstancedMesh(fernGeo,fernMat,600);ferns.instanceMatrix.setUsage(THREE.StaticDrawUsage);let n=0;
-for(let i=0;i<2400&&n<600;i++){let x=(rand(i+leaf*4001,715)-.5)*4400,z=(rand(i+leaf*4001,817)-.5)*4400,h=terrainHeight(x,z),b=biome(x,z);if(h<1.5||h>12||b==='BEACH'||b==='HIGHLANDS')continue;let sc=.5+rand(i,333)*1.7;dummy.position.set(x,h+.52*sc,z);dummy.rotation.set(-.5+leaf*.5,rand(i,999)*6.28,leaf*.7-.7);dummy.scale.set(sc,sc,sc);dummy.updateMatrix();ferns.setMatrixAt(n++,dummy.matrix)}ferns.count=n;ferns.instanceMatrix.needsUpdate=true;ferns.frustumCulled=false;scene.add(ferns)}
-// Additional coastal palms, swamp reeds, highland boulders and forest undergrowth.
-const palmLeaf=mat(0x39865b),reedMat=mat(0x62825a),rockMat=mat(0x777d75),palmTrunk=mat(0x79664b);
-for(let i=0;i<120;i++){let x=(rand(i,331)-.5)*4400,z=(rand(i,551)-.5)*4400,h=terrainHeight(x,z),b=biome(x,z);if(h<.45||Math.hypot(x-pos.x,z-pos.z)<7)continue;
-if(b==='BEACH'&&h<2.7){let g=new THREE.Group();g.position.set(x,h,z);scene.add(g);let t=cylinder(g,0,2.8,0,.12,.23,5.6,palmTrunk);t.rotation.z=.12;for(let k=0;k<6;k++){let a=k*Math.PI/3;let frond=mesh(new THREE.ConeGeometry(.47,3.5,4),palmLeaf,g);frond.position.set(Math.cos(a)*1.2,5.25,Math.sin(a)*1.2);frond.rotation.z=Math.cos(a)*1.1;frond.rotation.x=Math.sin(a)*1.1}}
-else if(b==='HIGHLANDS'){let a=mesh(new THREE.DodecahedronGeometry(1.1+rand(i,67)*1.7,0),rockMat);a.position.set(x,h+.6,z);a.scale.set(1.3,.65,1);a.rotation.y=rand(i,32)*6.28}
-else if(b==='SWAMP'){let g=new THREE.Group();g.position.set(x,h,z);scene.add(g);for(let j=0;j<5;j++){let a=j*2.4;let reed=cylinder(g,Math.sin(a)*.55,.6,Math.cos(a)*.55,.025,.045,1.2+rand(i,j)*.8,reedMat);reed.rotation.z=.12*Math.sin(a)}}
-else{/* Temporary dinosaur-model test: hide scattered small bushes. */}}
+function addInstances(spec,gltf){
+ const root=gltf.scene;root.updateMatrixWorld(true);
+ const bounds=new THREE.Box3().setFromObject(root),size=bounds.getSize(new THREE.Vector3());
+ if(!Number.isFinite(size.y)||size.y<.001)throw Error('Empty model');
+ const baseScale=spec.height/size.y;
+ const cx=(bounds.min.x+bounds.max.x)*.5,cz=(bounds.min.z+bounds.max.z)*.5,by=bounds.min.y;
+ spec.meshes=[];
+ root.traverse(o=>{
+  if(!o.isMesh||!o.geometry)return;
+  const geometry=o.geometry.clone();
+  geometry.applyMatrix4(o.matrixWorld);
+  geometry.translate(-cx,-by,-cz);
+  geometry.scale(baseScale,baseScale,baseScale);
+  const materials=Array.isArray(o.material)?o.material:o.material?[o.material]:[];
+  if(!materials.length)return;
+  const material=materials.map(m=>{
+   const copy=m.clone();
+   if(spec.kind!=='tree'){copy.side=THREE.DoubleSide;if(copy.transparent&&copy.opacity===1){copy.alphaTest=Math.max(copy.alphaTest||0,.25);copy.transparent=false;}}
+   return copy;
+  });
+  const inst=new THREE.InstancedMesh(geometry,material.length===1?material[0]:material,spec.max);
+  inst.count=0;inst.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+  inst.frustumCulled=false;inst.castShadow=false;inst.receiveShadow=false;
+  scene.add(inst);spec.meshes.push(inst);
+ });
+ if(!spec.meshes.length)throw Error('No mesh in '+spec.file);
+}
+function updateForest(force=false){
+ if(!force&&Math.hypot(pos.x-updateForest.x,pos.z-updateForest.z)<18)return;
+ updateForest.x=pos.x;updateForest.z=pos.z;
+ for(const s of species)if(s.meshes){
+  const tree=s.kind==='tree',log=s.kind==='log';
+  const spacing=tree?11:log?28:3.65;
+  const radius=tree?125:log?108:70;
+  const cells=Math.ceil(radius/spacing),cx=Math.floor(pos.x/spacing),cz=Math.floor(pos.z/spacing);
+  let n=0;
+  for(let dz=-cells;dz<=cells&&n<s.max;dz++)for(let dx=-cells;dx<=cells&&n<s.max;dx++){
+   const gx=cx+dx,gz=cz+dz;
+   const seed=s.kind==='tree'?0:s.kind==='shrub'?71:s.kind==='fern'?129:s.kind==='sorrel'?223:381;
+   const x=(gx+(rand(gx+seed+18,gz+41)-.5)*.72)*spacing;
+   const z=(gz+(rand(gx+seed+87,gz+93)-.5)*.72)*spacing;
+   if((x-pos.x)**2+(z-pos.z)**2>radius*radius||!allowed(x,z,tree))continue;
+   const roll=rand(gx+seed+200,gz+seed+300);
+   if(tree){
+    if(roll<.20)continue;
+    const which=Math.floor(rand(gx+66,gz+77)*5);
+    if(species[which]!==s)continue;
+   }else if(log){if(roll>.34)continue;}
+   else if(s.kind==='shrub'&&roll>.76)continue;
+   else if(s.kind==='fern'&&roll>.88)continue;
+   else if(s.kind==='sorrel'&&roll>.91)continue;
+   const h=terrainHeight(x,z),scale=(tree?.72:.75)+rand(gx+seed+9,gz+seed+17)*(tree?.58:.65);
+   dummy.position.set(x,h-(log?.16:0),z);
+   dummy.rotation.set(0,rand(gx+seed+19,gz+seed+31)*Math.PI*2,0);
+   dummy.scale.setScalar(scale);
+   dummy.updateMatrix();
+   for(const inst of s.meshes)inst.setMatrixAt(n,dummy.matrix);
+   n++;
+  }
+  for(const inst of s.meshes){inst.count=n;inst.instanceMatrix.needsUpdate=true;inst.computeBoundingSphere();}
+ }
+}
+refreshNearbyForest=updateForest;
+for(const s of species){
+ loader.load('./models/'+s.dir+'/'+s.file+'?v=13.3',gltf=>{
+  try{addInstances(s,gltf);loaded++;updateStatus();updateForest(true);}
+  catch(e){failed++;updateStatus();console.warn('Forest model invalid:',s.file,e);}
+ },undefined,e=>{failed++;updateStatus();console.warn('Forest model missing:',s.file,e);});
+}
+refreshNearbyForest(true);
 // Light cloud banks, visible in the sky and moving slowly.
 const cloudMat=new THREE.MeshBasicMaterial({color:0xf0f3ed,transparent:true,opacity:.55,depthWrite:false});for(let i=0;i<13;i++){let g=new THREE.Group();g.position.set((rand(i,411)-.5)*230,46+rand(i,412)*16,(rand(i,413)-.5)*230);for(let j=0;j<4;j++)ball(g,(j-1.5)*5,Math.sin(j)*1.5,0,7,2.4,4,cloudMat);clouds.push(g)}
 // Soft sea-floor color shift is produced by the semi-transparent ocean surface.
